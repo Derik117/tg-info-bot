@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"strings"
-	"tg-info-bot/helpers"
 )
 
 type config struct {
@@ -56,13 +55,13 @@ func main() {
 				bot.Send(msg)
 			} else {
 				msg := tgbotapi.NewMessage(update.Message.Chat.ID,
-					helpers.GetTextForChat(&chat))
+					GetTextForChat(&chat))
 				msg.ReplyToMessageID = update.Message.MessageID
 				msg.ParseMode = "markdown"
 				bot.Send(msg)
 			}
 		} else {
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, helpers.GetTextForNewMessage(update))
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, GetTextForNewMessage(update))
 			msg.ReplyToMessageID = update.Message.MessageID
 			msg.ParseMode = "markdown"
 			bot.Send(msg)
